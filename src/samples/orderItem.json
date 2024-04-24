@@ -1,0 +1,67 @@
+{
+  "id": "770609841840444",
+  "product_id": "9456523504389716",
+  "retailer_id": "Test Baby Yoda_random_retailer_id",
+  "quantity": 3,
+  "price_per_unit": {
+    "amount": "100.00",
+    "currency": "USD"
+  },
+  "order_id": "770609848507110",
+  "order_status": {
+    "state": "IN_PROGRESS"
+  },
+  "created": "2024-04-17T23:04:34+00:00",
+  "last_updated": "2024-04-17T23:06:21+00:00",
+  "channel": "facebook",
+  "ship_by_date": "2024-04-22",
+  "selected_shipping_option": {
+    "name": "STANDARD (1 - 3 Business days)",
+    "price": {
+      "amount": "8.00",
+      "currency": "USD"
+    },
+    "calculated_tax": {
+      "amount": "0.75",
+      "currency": "USD"
+    },
+    "estimated_shipping_time": {
+      "min_days": 1,
+      "max_days": 3
+    }
+  },
+  "shipping_address": {
+    "name": "Test User",
+    "street1": "1 Hacker Way",
+    "city": "Menlo Park",
+    "state": "CA",
+    "postal_code": "94025",
+    "country": "US"
+  },
+  "estimated_payment_details": {
+    "subtotal": {
+      "items": {
+        "amount": "600.00",
+        "currency": "USD"
+      },
+      "shipping": {
+        "amount": "8.00",
+        "currency": "USD"
+      }
+    },
+    "tax": {
+      "amount": "57.00",
+      "currency": "USD"
+    },
+    "total_amount": {
+      "amount": "665.00",
+      "currency": "USD"
+    },
+    "tax_remitted": true
+  },
+  "buyer_details": {
+    "name": "Test User",
+    "email": "carlosmartinezt@outlook.com",
+    "email_remarketing_option": false
+  }
+}

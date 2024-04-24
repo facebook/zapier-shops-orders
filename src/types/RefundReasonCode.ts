@@ -1,0 +1,8 @@
+export type RefundReasonCode =
+  | 'BUYERS_REMORSE'
+  | 'DAMAGED_GOODS'
+  | 'NOT_AS_DESCRIBED'
+  | 'QUALITY_ISSUE'
+  | 'REFUND_REASON_OTHER'
+  | 'WRONG_ITEM'
+  | 'FACEBOOK_INITIATED';

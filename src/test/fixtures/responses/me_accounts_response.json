@@ -1,0 +1,48 @@
+{
+  "data": [
+    {
+      "id": "100768832330000",
+      "name": "Page with CMS",
+      "commerce_merchant_settings": {
+        "data": [
+          {
+            "id": "42602200671955"
+          }
+        ],
+        "paging": {
+          "cursors": {
+            "before": "QVFIUkxrZATlTX01kbU4tdFFKRm01ZA0lLT0puZAjJvVko4YnhxUFpIOTNwRHdXT25qVlJCVHl1Sll4UkIteVYyajJTVmdoMGZAyOVBpOWNZAS3dGSW1DRmgwQmFR",
+            "after": "QVFIUkxrZATlTX01kbU4tdFFKRm01ZA0lLT0puZAjJvVko4YnhxUFpIOTNwRHdXT25qVlJCVHl1Sll4UkIteVYyajJTVmdoMGZAyOVBpOWNZAS3dGSW1DRmgwQmFR"
+          }
+        }
+      }
+    },
+    {
+      "id": "101653129273240",
+      "name": "Page without CMS"
+    },
+    {
+      "id": "102134554883948",
+      "name": "Page 2 with CMS",
+      "commerce_merchant_settings": {
+        "data": [
+          {
+            "id": "953202671920819"
+          }
+        ],
+        "paging": {
+          "cursors": {
+            "before": "QVFIUnpVNDRVRjlmLTdVTFdMak5yVTRvc0pkeGZAEMUFFWE12ZAHBSWTVaT0phUXQ3QjAzRTNoRTItQ3FMcmJ1TlpuVEFJUHY0UjgzQjgwWnlyWk14ZAjhwUHJ3",
+            "after": "QVFIUnpVNDRVRjlmLTdVTFdMak5yVTRvc0pkeGZAEMUFFWE12ZAHBSWTVaT0phUXQ3QjAzRTNoRTItQ3FMcmJ1TlpuVEFJUHY0UjgzQjgwWnlyWk14ZAjhwUHJ3"
+          }
+        }
+      }
+    }
+  ],
+  "paging": {
+    "cursors": {
+      "before": "MTAwNzY4ODMyMzMwMDAw",
+      "after": "MTg0Nzg3NjYyODg0MDI3NgZDZD"
+    }
+  }
+}
