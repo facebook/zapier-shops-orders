@@ -40,3 +40,7 @@ npm run build
 # To push to Zapier, make sure you compile first
 npm run build && zapier push
 ```
+
+# License
+
+This code is made available under an [MIT license](./LICENSE). However, you may have other legal obligations that govern your use of other content, such as the terms of service for third-party solutions and technologies.

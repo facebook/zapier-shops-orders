@@ -1,4 +1,9 @@
-// (c) Meta Platforms, Inc. and affiliates. Confidential and proprietary.
+/**
+ * (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
 import response from '../samples/update-response.json';
 import { Bundle, ZObject } from 'zapier-platform-core';
