@@ -11,8 +11,8 @@ import orders, { Input } from './orders';
 
 const perform = async (z: ZObject, bundle: Bundle<Input>) => {
   const data = await orders.operation.perform(z, bundle);
-  return data.flatMap((order) =>
-    order.items.data.map((item) => {
+  return data.flatMap((order) => {
+    return order.items.data.map((item) => {
       return {
         ...item,
         order_id: order.id,
@@ -24,8 +24,8 @@ const perform = async (z: ZObject, bundle: Bundle<Input>) => {
         estimated_payment_details: order.estimated_payment_details,
         buyer_details: order.buyer_details,
       };
-    })
-  );
+    });
+  });
 };
 
 export default {
@@ -33,8 +33,7 @@ export default {
   noun: 'OrderItems',
   display: {
     label: 'Order Items',
-    description:
-      'Triggers when a new order item is created. Every record represents an order item.',
+    description: 'Triggers when a new order item is created. Every record represents an order item',
     hidden: false,
   },
   operation: {

@@ -5,5 +5,6 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-export const GRAPH_URL = 'https://graph.facebook.com';
-export const BASE_URL = `${GRAPH_URL}/v19.0`;
+import { FacebookAdsApi } from 'facebook-nodejs-business-sdk';
+
+export const BASE_URL = FacebookAdsApi.GRAPH + '/' + FacebookAdsApi.VERSION;

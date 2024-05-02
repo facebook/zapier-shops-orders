@@ -11,7 +11,7 @@ import orders from './triggers/orders';
 import orderItems from './triggers/orderItems';
 import fulfillOrderItem from './creates/fulfillOrderItem';
 import authentication from './authentication';
-import { includeBearerToken, checkForErrors } from './middleware';
+import { checkForErrors } from './middleware';
 import cancelOrderItem from './creates/cancelOrderItem';
 import refundOrderItem from './creates/refundOrderItem';
 import updateOrderItem from './creates/updateOrderItem';
@@ -23,7 +23,7 @@ export default {
   version,
   platformVersion,
   authentication,
-  beforeRequest: [includeBearerToken],
+  beforeRequest: [],
   afterResponse: [checkForErrors],
   triggers: {
     orders: orders,

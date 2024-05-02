@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 import response from '../samples/fulfillment-response.json';
 import { Bundle, ZObject } from 'zapier-platform-core';
 import { ShipmentRequest } from '../types/ShipmentRequest';
+import { CommerceOrder, FacebookAdsApi } from 'facebook-nodejs-business-sdk';
 
 export type Input = {
   order_id: string;
@@ -63,16 +64,10 @@ const perform = async (z: ZObject, bundle: Bundle<Input>) => {
       merchant_order_reference !== '' ? merchant_order_reference : undefined,
     idempotency_key: uuidv4(),
   };
-  const response = await z.request({
-    url: `${BASE_URL}/${order_id}/shipments`,
-    method: 'POST',
-    body: body,
-    headers: {
-      prefixErrorMessageWith: 'Unable to fulfill your Meta Shop orders',
-    },
-  });
-
-  return response.data;
+  FacebookAdsApi.init(bundle.authData.access_token);
+  let order = new CommerceOrder(order_id);
+  order = await order.createShipment([], body);
+  return order._data;
 };
 
 export default {

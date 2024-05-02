@@ -6,8 +6,12 @@
  */
 
 import sample from '../samples/order.json';
-import { BASE_URL } from '../constants';
 import { Bundle, ZObject } from 'zapier-platform-core';
+import {
+  CommerceOrder,
+  CommerceMerchantSettings,
+  FacebookAdsApi,
+} from 'facebook-nodejs-business-sdk';
 import { Order } from '../types/Order';
 
 export type Input = {
@@ -27,25 +31,42 @@ const getUnixTime = (dateString?: string): number | undefined => {
   }
 };
 
-const perform = async (z: ZObject, bundle: Bundle<Input>) => {
+const perform = async (_z: ZObject, bundle: Bundle<Input>) => {
   const { cms_id, state, filters, updated_before, updated_after } = bundle.inputData;
-  const params = {
-    fields:
-      'id,order_status,created,last_updated,items,channel,ship_by_date,merchant_order_id,selected_shipping_option,shipping_address,estimated_payment_details,buyer_details',
-    state: state.toString(),
-    filters: filters?.toString(),
-    updated_before: getUnixTime(updated_before),
-    updated_after: getUnixTime(updated_after),
+  const params: Record<any, any> = {
+    state: state,
   };
-  const response = await z.request({
-    url: `${BASE_URL}/${cms_id}/commerce_orders`,
-    params: params,
-    headers: {
-      prefixErrorMessageWith: 'Unable to retrieve your Meta Shop orders',
-    },
-  });
+  if (filters) {
+    params.filters = filters;
+  }
+  if (updated_before) {
+    params.updated_before = getUnixTime(updated_before);
+  }
+  if (updated_after) {
+    params.updated_after = getUnixTime(updated_after);
+  }
 
-  return response.json.data as Array<Order>;
+  FacebookAdsApi.init(bundle.authData.access_token);
+  const cms = new CommerceMerchantSettings(cms_id);
+  const orders = await cms.getCommerceOrders(
+    [
+      CommerceOrder.Fields.id,
+      CommerceOrder.Fields.order_status,
+      CommerceOrder.Fields.created,
+      CommerceOrder.Fields.last_updated,
+      CommerceOrder.Fields.channel,
+      CommerceOrder.Fields.ship_by_date,
+      CommerceOrder.Fields.merchant_order_id,
+      CommerceOrder.Fields.selected_shipping_option,
+      CommerceOrder.Fields.shipping_address,
+      CommerceOrder.Fields.estimated_payment_details,
+      CommerceOrder.Fields.buyer_details,
+      'items',
+    ],
+    params
+  );
+
+  return orders.map((order) => (order as CommerceOrder)._data) as Order[];
 };
 
 export default {
@@ -66,24 +87,13 @@ export default {
         required: false,
         list: true,
         default: 'IN_PROGRESS',
-        choices: {
-          FB_PROCESSING: 'Processing',
-          CREATED: 'Created',
-          IN_PROGRESS: 'In Progress',
-          COMPLETED: 'Completed',
-        },
+        choices: CommerceOrder.State,
       },
       {
         key: 'filters',
         required: false,
         list: true,
-        choices: {
-          no_shipments: 'No shipments',
-          has_cancellations: 'Has cancellations',
-          no_cancellations: 'No cancellations',
-          has_refunds: 'Has refunds',
-          no_refunds: 'No refunds',
-        },
+        choices: CommerceOrder.Filters,
       },
       { key: 'updated_before', required: false, type: 'datetime' },
       { key: 'updated_after', required: false, type: 'datetime' },

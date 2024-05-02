@@ -13,11 +13,14 @@ import { BASE_URL } from '../constants';
 const appTester = createAppTester(App);
 
 const order_id = '1234567890';
-const sucessResponse = { success: true };
+const successResponse = { success: true };
+const authData = {
+  access_token: 'dummy',
+};
 
 describe('creates objects', () => {
   test('Fulfill order items ', async () => {
-    nock(BASE_URL).post(`/${order_id}/shipments`).query(true).reply(200, sucessResponse);
+    nock(BASE_URL).post(`/${order_id}/shipments`).query(true).reply(200, successResponse);
     const result = await appTester(App.creates.fulfillOrderItem.operation.perform, {
       inputData: {
         order_id: order_id,
@@ -30,11 +33,12 @@ describe('creates objects', () => {
         fulfillment_location_id: '1',
         merchant_order_reference: '12345',
       },
+      authData,
     });
-    expect(result).toMatchObject(sucessResponse);
+    expect(result).toMatchObject(successResponse);
   });
   test('Update order items (Ship)', async () => {
-    nock(BASE_URL).post(`/${order_id}/shipments`).query(true).reply(200, sucessResponse);
+    nock(BASE_URL).post(`/${order_id}/shipments`).query(true).reply(200, successResponse);
     const result = await appTester(App.creates.updateOrderItem.operation.perform, {
       inputData: {
         order_id: order_id,
@@ -46,11 +50,12 @@ describe('creates objects', () => {
         merchant_order_reference: '12345',
         action: 'FULFILL' as const,
       },
+      authData,
     });
-    expect(result).toMatchObject(sucessResponse);
+    expect(result).toMatchObject(successResponse);
   });
   test('Update order items (Cancel)', async () => {
-    nock(BASE_URL).post(`/${order_id}/cancellations`).query(true).reply(200, sucessResponse);
+    nock(BASE_URL).post(`/${order_id}/cancellations`).query(true).reply(200, successResponse);
     const result = await appTester(App.creates.updateOrderItem.operation.perform, {
       inputData: {
         order_id: order_id,
@@ -59,11 +64,12 @@ describe('creates objects', () => {
         cancel_reason: 'CUSTOMER_REQUESTED' as const,
         action: 'CANCEL' as const,
       },
+      authData,
     });
-    expect(result).toMatchObject(sucessResponse);
+    expect(result).toMatchObject(successResponse);
   });
   test('Update order items (Refund)', async () => {
-    nock(BASE_URL).post(`/${order_id}/refunds`).query(true).reply(200, sucessResponse);
+    nock(BASE_URL).post(`/${order_id}/refunds`).query(true).reply(200, successResponse);
     const result = await appTester(App.creates.updateOrderItem.operation.perform, {
       inputData: {
         order_id: order_id,
@@ -72,7 +78,8 @@ describe('creates objects', () => {
         action: 'REFUND' as const,
         refund_reason: 'BUYERS_REMORSE',
       },
+      authData,
     });
-    expect(result).toMatchObject(sucessResponse);
+    expect(result).toMatchObject(successResponse);
   });
 });

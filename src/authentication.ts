@@ -5,19 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { BASE_URL } from './constants';
-
 import { Bundle, ZObject } from 'zapier-platform-core';
-import { CommerceMerchantSettings } from './types/CommerceMerchantSettings';
+import { FacebookAdsApi, User } from 'facebook-nodejs-business-sdk';
 
-const test = async (z: ZObject, _bundle: Bundle) => {
-  const response = await z.request(`${BASE_URL}/me`, {
-    headers: {
-      prefixErrorMessageWith:
-        'Unable to get Commerce account details, please enter a valid access token and try again',
-    },
-  });
-  return z.JSON.parse(response.content) as CommerceMerchantSettings;
+const test = async (_z: ZObject, bundle: Bundle) => {
+  FacebookAdsApi.init(bundle.authData.access_token);
+  const user = await new User('me').get([]);
+  return user.id;
 };
 
 export default {

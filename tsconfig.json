@@ -8,6 +8,7 @@
     "lib": ["dom", "esnext"],
     "outDir": "./lib",
     "rootDir": "./src",
-    "strict": true
+    "strict": true,
+    "skipLibCheck": true
   }
 }

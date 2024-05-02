@@ -5,10 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { Bundle, HttpResponse, ZObject } from 'zapier-platform-core';
-import { RequestOptions } from 'https';
+import { Bundle, HttpRequestOptions, HttpResponse, ZObject } from 'zapier-platform-core';
 
-export const includeBearerToken = (request: RequestOptions, _z: ZObject, bundle: Bundle) => {
+export const includeBearerToken = (request: HttpRequestOptions, _z: ZObject, bundle: Bundle) => {
   const access_token = bundle.authData.access_token;
   if (access_token) {
     request.headers = request.headers || {};

@@ -20,8 +20,8 @@ zapier register "App Title"
 # Or you can link to an existing integration on Zapier
 zapier link
 
-# Push it to Zapier
-zapier push
+# Push it to Zapier. Include all dependencies because Facebook SDK has many that Zapier CLI can't detect
+zapier push --disable-dependency-detection
 ```
 
 At this point this source code would be connected to a private integration that only you have access to. You can now proceed to make changes.

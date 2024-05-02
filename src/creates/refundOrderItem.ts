@@ -12,6 +12,7 @@ import response from '../samples/update-response.json';
 import { Bundle, ZObject } from 'zapier-platform-core';
 import { RefundRequest } from '../types/RefundRequest';
 import { RefundReasonCode } from '../types/RefundReasonCode';
+import { CommerceOrder, FacebookAdsApi } from 'facebook-nodejs-business-sdk';
 
 export type Input = {
   order_id: string;
@@ -80,16 +81,10 @@ const perform = async (z: ZObject, bundle: Bundle<Input>) => {
     return_id: refund_id,
   };
 
-  const response = await z.request({
-    url: `${BASE_URL}/${order_id}/refunds`,
-    method: 'POST',
-    body: body,
-    headers: {
-      prefixErrorMessageWith: 'Unable to refund your Meta Shop orders',
-    },
-  });
-
-  return response.data;
+  FacebookAdsApi.init(bundle.authData.access_token);
+  let order = new CommerceOrder(order_id);
+  order = await order.createRefund([], body);
+  return order._data;
 };
 
 export default {
