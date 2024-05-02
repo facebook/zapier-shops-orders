@@ -1,4 +1,4 @@
-# Meta Shops Zapier integration
+# Meta Shops Orders Zapier integration
 
 This integration should be published in the Zapier library online
 So you don't need to play with the source code.
