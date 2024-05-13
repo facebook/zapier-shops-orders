@@ -18,6 +18,9 @@ import updateOrderItem from './creates/updateOrderItem';
 
 // @ts-ignore must use require
 const { version } = require('../package.json');
+// needed for Meta SDK and for Zapier to push it
+require('proxy-from-env');
+require('follow-redirects');
 
 export default {
   version,

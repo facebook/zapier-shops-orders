@@ -92,7 +92,7 @@ export default {
   noun: 'Refund Order Item',
   display: {
     label: 'Refund Order Item',
-    description: 'Refunds an order item',
+    description: 'Refunds an order item.',
     hidden: false,
   },
   operation: {

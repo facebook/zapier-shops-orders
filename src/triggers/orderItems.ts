@@ -33,7 +33,8 @@ export default {
   noun: 'OrderItems',
   display: {
     label: 'Order Items',
-    description: 'Triggers when a new order item is created. Every record represents an order item',
+    description:
+      'Triggers when a new order item is created. Every record represents an order item.',
     hidden: false,
   },
   operation: {

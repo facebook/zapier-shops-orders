@@ -108,7 +108,7 @@ export default {
   noun: 'Update Order Item',
   display: {
     label: 'Updated Order Item',
-    description: 'Updates an order item: Fullfill, Cancel or Refund based on an ACTION field',
+    description: 'Updates an order item: Fullfill, Cancel or Refund based on an ACTION field.',
     hidden: false,
   },
   operation: {
@@ -149,7 +149,7 @@ export default {
           'WRONG_ITEM',
         ],
       },
-      { key: 'action', type: 'string', required: true, choices: ['FULLFILL', 'CANCEL', 'REFUND'] },
+      { key: 'action', type: 'string', required: true, choices: ['FULFILL', 'CANCEL', 'REFUND'] },
     ],
     sample: response,
   },

@@ -1,7 +1,7 @@
 {
   "name": "zapier-shops-orders",
-  "version": "1.0.2",
-  "description": "Meta Shops Orders Zapier integrations",
+  "version": "1.5.1",
+  "description": "Meta Shops Orders Zapier integrations.",
   "main": "index.js",
   "scripts": {
     "test": "npm run build && jest --testTimeout 10000 --rootDir ./lib/test --forceExit",
@@ -10,9 +10,12 @@
     "watch": "npm run clean && tsc --watch"
   },
   "dependencies": {
+    "axios": "^1.6.8",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "facebook-nodejs-business-sdk": "^19.0.3",
+    "follow-redirects": "^1.15.6",
+    "proxy-from-env": "^1.1.0",
     "uuidv4": "^6.2.13",
     "zapier-platform-core": "15.7.0"
   },

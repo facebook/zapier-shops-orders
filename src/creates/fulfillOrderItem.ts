@@ -74,8 +74,8 @@ export default {
   key: 'fulfillOrderItem',
   noun: 'Fulfill Order Item',
   display: {
-    label: 'Fullfill Order Item',
-    description: 'Fulfills (ships) an order item',
+    label: 'Fulfill Order Item',
+    description: 'Fulfills (ships) an order item.',
     hidden: false,
   },
   operation: {
